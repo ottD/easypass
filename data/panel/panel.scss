@@ -290,9 +290,9 @@ a
   background-image: url(../images/archive.svg);
 }
 
-.show-qrcode-link
+.pwshow-link
 {
-  background-image: url(../images/ios-barcode-outline.svg);
+  background-image: url(../images/android-warning.svg);
 }
 
 .notes-link
@@ -473,9 +473,19 @@ a
   background-image: url("../images/close-round.svg");
 }
 
-#qrcode-canvas
+#pwshow-password-text
 {
-  align-self: center;
+  border: 1px solid $warning-background;
+  color: white;
+  font: $font-size-small $font-family-monospace;
+  padding: $block-padding;
+  text-align: center;
+}
+
+#pwshow-password-text::selection
+{
+  color: $warning-background;
+  background: $warning-background;
 }
 
 #notes-textarea

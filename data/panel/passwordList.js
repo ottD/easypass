@@ -40,13 +40,14 @@ setCommandHandler("lock-passwords", () =>
 let menuPassword = null;
 setCommandHandler("menu-to-document", () => fillInPassword(menuPassword));
 setCommandHandler("menu-to-clipboard", () => copyToClipboard(menuPassword));
-setCommandHandler("menu-show-qrcode", () => showQRCode(menuPassword));
+setCommandHandler("menu-pwshow", () => showPw(menuPassword));
 setCommandHandler("menu-notes", () => showNotes(menuPassword));
 setCommandHandler("menu-upgrade-password", () => upgradePassword(menuPassword));
 setCommandHandler("menu-make-generated", () => makeGenerated(menuPassword));
 setCommandHandler("menu-bump-revision", () => bumpRevision(menuPassword));
 setCommandHandler("menu-password-remove", () => removePassword(menuPassword));
 $("password-menu").addEventListener("click", hideMenu);
+$("pwshow-password-text").addEventListener("mouseup", event => $("pwshow-password-text").select());
 
 removeWhitespace($("password-template"));
 
@@ -323,10 +324,10 @@ function copyToClipboard(password)
   }).catch(showPasswordMessage);
 }
 
-function showQRCode(password)
+function showPw(password)
 {
   passwords.getPassword(state.site, password.name, password.revision)
-    .then(value => require("./qrcode").show(password, value))
+    .then(value => require("./pwshow").show(password, value))
     .catch(showPasswordMessage);
 }
 

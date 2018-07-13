@@ -19,7 +19,7 @@ let stateToPanel = {
   "unset": ["change-master"],
   "set": ["enter-master", "change-master"],
   "migrating": ["migration"],
-  "known": ["password-list", "generate-password", "stored-password", "recovery-code", "qrcode", "sync-setup", "sync-state", "confirm"]
+  "known": ["password-list", "generate-password", "stored-password", "recovery-code", "pwshow", "sync-setup", "sync-state", "confirm"]
 };
 
 function set(state)

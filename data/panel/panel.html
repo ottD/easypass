@@ -104,9 +104,9 @@
           <span class="to-clipboard-link iconic-link"></span>
           <span data-l10n-id="to_clipboard"></span>
         </a>
-        <a href="#" id="menu-show-qrcode" class="password-menu-entry">
-          <span class="show-qrcode-link iconic-link"></span>
-          <span data-l10n-id="show_qrcode"></span>
+        <a href="#" id="menu-pwshow" class="password-menu-entry">
+          <span class="pwshow-link iconic-link"></span>
+          <span data-l10n-id="pwshow"></span>
         </a>
         <a href="#" id="menu-notes" class="password-menu-entry">
           <span class="notes-link iconic-link"></span>
@@ -256,17 +256,19 @@
       </div>
     </form>
 
-    <form id="qrcode" class="slide" data-default-element="qrcode-ok">
+    <form id="pwshow" class="slide" data-default-element="pwshow-ok">
       <label data-l10n-id="site"></label>
-      <div id="qrcode-website-name"></div>
+      <div id="pwshow-website-name"></div>
       <label class="block-start" data-l10n-id="user_name"></label>
-      <div id="qrcode-user-name-container">
-        <span id="qrcode-user-name"></span>
-        <span id="qrcode-password-revision" class="password-revision"></span>
+      <div id="pwshow-user-name-container">
+        <span id="pwshow-user-name"></span>
+        <span id="pwshow-password-revision" class="password-revision"></span>
       </div>
-      <canvas class="block-start" id="qrcode-canvas"></canvas>
+      <div id="pwshow-password-container">
+        <input id="pwshow-password-text" autocomplete="off">
+      </div>
       <div class="button-container">
-        <button id="qrcode-ok" type="submit" data-l10n-id="cancel"></button>
+        <button id="pwshow-ok" type="submit" data-l10n-id="cancel"></button>
       </div>
     </form>
 
