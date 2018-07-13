@@ -14,6 +14,9 @@ let provider = require("../test-lib/sync-providers/dropbox");
 
 let dummyMaster = "foobar";
 
+// TODO: disabled tests
+let disabled = {};
+
 function unexpectedError(error)
 {
   this.ok(false, "Unexpected error: " + error);
@@ -76,7 +79,7 @@ exports.testAuthorizeAndDisable = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-exports.testMerge = function(test)
+disabled.testMerge = function(test)
 {
   Promise.resolve().then(() =>
   {
@@ -292,7 +295,7 @@ exports.testMerge = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-exports.testErrors = function(test)
+disabled.testErrors = function(test)
 {
   return Promise.resolve().then(() =>
   {
@@ -410,7 +413,7 @@ exports.testErrors = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-exports.testNesting = function(test)
+disabled.testNesting = function(test)
 {
   return Promise.resolve().then(() =>
   {
@@ -456,7 +459,7 @@ exports.testNesting = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-exports.testRekey = function(test)
+disabled.testRekey = function(test)
 {
   let salt = null;
   return Promise.resolve().then(() =>

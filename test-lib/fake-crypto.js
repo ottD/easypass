@@ -153,5 +153,20 @@ exports.subtle = {
         Buffer.from(cleartext)
       ]);
     });
+  },
+
+  digest: function(algo, cleartext)
+  {
+    return Promise.resolve().then(() =>
+    {
+      if (algo == "SHA-256")
+      {
+        let hash = crypto.createHash("sha256");
+        hash.update(cleartext);
+        return hash.digest();
+      }
+
+      throw new Error("Unexpected digest algorithm");
+    });
   }
 };

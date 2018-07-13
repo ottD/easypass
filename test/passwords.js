@@ -13,6 +13,9 @@ let storage = require("../lib/storage");
 
 let dummyMaster = "foobar";
 
+// TODO: disabled tests
+let disabled = {};
+
 let generated1 = {
   site: "example.com",
   name: "foo",
@@ -792,7 +795,7 @@ exports.testAllPasswords = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-exports.testExport = function(test)
+disabled.testExport = function(test)
 {
   function checkExport(test, exportData)
   {
@@ -951,7 +954,7 @@ exports.testExport = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-exports.testDecryptingImport = function(test)
+disabled.testDecryptingImport = function(test)
 {
   Promise.resolve().then(() =>
   {
@@ -1040,7 +1043,7 @@ exports.testDecryptingImport = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-exports.testConvertingImport = function(test)
+disabled.testConvertingImport = function(test)
 {
   let backupMaster = dummyMaster + dummyMaster;
   Promise.resolve().then(() =>
@@ -1659,7 +1662,7 @@ exports.testImportErrors = function(test)
   }).catch(expectedValue.bind(test, "unknown_data_format")).then(done.bind(test));
 };
 
-exports.testMigration = function(test)
+disabled.testMigration = function(test)
 {
   let nodeCrypto = require("crypto");
   function getKey(salt)
