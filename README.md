@@ -1,7 +1,25 @@
-PfP: Pain-free Passwords
-========================
+Adrium Easy Pass
+================
 
-PfP: Pain-free Passwords is a Firefox, Chrome, Opera and Edge password manager. Most passwords will be generated for a specific site and account from your master password whenever needed, these passwords are never stored on disk and can be recreated easily if data is lost. For passwords that cannot be changed for some reason, storing the password with the extension data is also supported. All extension data is safely encrypted.
+This is a fork of [PfP: Pain-free Passwords](https://pfp.works).
+
+The motivation is briefly discussed in [an issue](https://github.com/palant/pfp/issues/80).
+
+Differences to the original version:
+
+* Multiple master passwords can be used
+* Show the passwords concealed to use drag and drop
+* Smaller layout
+
+What does not work (yet?):
+
+* Import/Export/Migration
+* Only Chrome and Web tested
+
+Description
+===========
+
+Adrium Easy Pass is a Firefox, Chrome, Opera and Edge password manager. Most passwords will be generated for a specific site and account from your master password whenever needed, these passwords are never stored on disk and can be recreated easily if data is lost. For passwords that cannot be changed for some reason, storing the password with the extension data is also supported. All extension data is safely encrypted.
 
 You can get an idea of how PfP works by using the [online version](https://pfp.works/webclient/). Please make sure to read the warnings when using this one!
 

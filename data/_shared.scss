@@ -4,10 +4,10 @@
  * http://mozilla.org/MPL/2.0/.
  */
 
-$font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-family-monospace: 'Courier New', monospace;
-$font-size: 24px;
-$font-size-small: 16px;
+$font-family: sans-serif;
+$font-family-monospace: monospace;
+$font-size: 14px;
+$font-size-small: 12px;
 
 $text-color: #000;
 $background-color: #fff;
@@ -15,13 +15,15 @@ $warning-background: #faa;
 $success-background: #cfc;
 $error-text: #f44;
 
+$panel-width: 400px;
+
 $block-spacing: 15px;
 $block-padding: 5px;
 $inline-spacing: 5px;
 $border-radius: $block-padding;
 $dialog-padding: 20px;
 
-$icon-size: 32px;
+$icon-size: 24px;
 $large-icon-size: 48px;
 $logo-size: 128px;
 $logo-spacing: 16px;

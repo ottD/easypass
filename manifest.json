@@ -2,19 +2,13 @@
   "manifest_version": 2,
   "minimum_chrome_version": "51.0",
   "minimum_opera_version": "38.0",
-  "applications": {
-    "gecko": {
-      "id": "easypasswords@palant.de",
-      "strict_min_version": "51.0"
-    }
-  },
   "default_locale": "en_US",
   "name": "__MSG_name__",
   "short_name": "__MSG_name__",
   "description": "__MSG_description__",
-  "author": "Wladimir Palant",
-  "homepage_url": "https://pfp.works/",
-  "version": "2.1.1",
+  "author": "Adrium",
+  "homepage_url": "https://github.com/adrium/easypass.git",
+  "version": "0.9",
   "permissions": [
     "tabs",
     "http://*/*",

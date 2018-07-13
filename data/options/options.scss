@@ -11,7 +11,7 @@ $greyed-color: #ccc;
 :root
 {
   margin: 0;
-  min-width: 600px;
+  min-width: $panel-width;
 }
 
 body

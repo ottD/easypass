@@ -392,7 +392,7 @@ gulp.task("crx", ["build-chrome"], function()
       "!build-chrome/**/.*", "!build-chrome/**/*.zip", "!build-chrome/**/*.crx"
     ]),
     gulp.src("build-chrome/manifest.json").pipe(utils.jsonModify(removeReloader))
-  ).pipe(zip("pfp-" + manifest.version + ".zip"));
+  ).pipe(zip("aep-" + manifest.version + ".zip"));
   let keyFile = utils.readArg("--private-key=");
   if (keyFile)
     result = result.pipe(utils.signCRX(keyFile));
@@ -409,7 +409,7 @@ gulp.task("xpi", ["build-firefox"], function()
       "!build-firefox/**/.*", "!build-firefox/**/*.xpi"
     ]),
     gulp.src("build-firefox/manifest.json").pipe(utils.jsonModify(removeReloader))
-  ).pipe(zip("pfp-" + manifest.version + ".xpi")).pipe(gulp.dest("build-firefox"));
+  ).pipe(zip("aep-" + manifest.version + ".xpi")).pipe(gulp.dest("build-firefox"));
 });
 
 gulp.task("build-edge", ["build-chrome"], function()
@@ -484,7 +484,7 @@ gulp.task("appx", ["build-edge/extension.zip"], function(callback)
     }
 
     let manifest = require("./manifest.json");
-    fs.writeFile("build-edge/pfp-" + manifest.version  + ".appx", responseBody, callback);
+    fs.writeFile("build-edge/aep-" + manifest.version  + ".appx", responseBody, callback);
   });
 
   req.form().append("xml", fs.createReadStream("build-edge/extension.zip"));
@@ -496,7 +496,7 @@ gulp.task("web", ["build-web"], function()
   gulp.src([
     "build-web/**",
     "!build-web/**/.*", "!build-web/**/*.zip"
-  ]).pipe(zip("pfp-web-" + manifest.version + ".zip")).pipe(gulp.dest("build-web"));
+  ]).pipe(zip("aep-web-" + manifest.version + ".zip")).pipe(gulp.dest("build-web"));
 });
 
 gulp.task("test", ["validate", "build-test"], function()

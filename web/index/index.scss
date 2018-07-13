@@ -7,7 +7,7 @@
 @import "../../data/_shared.scss";
 
 $panel-padding: 10px;
-$panel-width: 600px + $panel-padding * 2;
+$panel-width-padded: $panel-width + $panel-padding * 2;
 
 iframe
 {
@@ -31,8 +31,8 @@ iframe[data-active="true"]
 
 #panel
 {
-  width: $panel-width;
-  left: calc((100% - #{$panel-width}) / 2);
+  width: $panel-width-padded;
+  left: calc((100% - #{$panel-width-padded}) / 2);
 }
 
 #inProgressOverlay:not([hidden])

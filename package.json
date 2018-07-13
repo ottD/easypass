@@ -1,8 +1,8 @@
 {
-  "title": "PfP: Pain-free Passwords",
-  "name": "pfp",
+  "title": "Adrium Easy Pass",
+  "name": "pfp-apg",
   "description": "Use a single master password to generate secure passwords for all websites - without losing track of passwords you cannot change.",
-  "author": "Wladimir Palant",
+  "author": "Adrium",
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
