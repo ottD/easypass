@@ -2,6 +2,7 @@ Adrium Easy Pass
 ================
 
 This is a fork of [PfP: Pain-free Passwords](https://pfp.works).
+It enables you to use multiple master passwords and to drag-and-drop passwords in case the automatic fill-in does not work.
 
 The motivation is briefly discussed in [an issue](https://github.com/palant/pfp/issues/80).
 
@@ -13,7 +14,9 @@ Differences to the original version:
 
 What does not work (yet?):
 
-* Import/Export/Migration
+* Import/Export
+* Migration
+* Sync
 * Only Chrome and Web tested
 
 Description
@@ -21,12 +24,12 @@ Description
 
 Adrium Easy Pass is a Firefox, Chrome, Opera and Edge password manager. Most passwords will be generated for a specific site and account from your master password whenever needed, these passwords are never stored on disk and can be recreated easily if data is lost. For passwords that cannot be changed for some reason, storing the password with the extension data is also supported. All extension data is safely encrypted.
 
-You can get an idea of how PfP works by using the [online version](https://pfp.works/webclient/). Please make sure to read the warnings when using this one!
+You can get an idea of how AEP works by using the [online version](https://adrium.github.io/easypass/). Please make sure to read the warnings when using this one!
 
 Installing build prerequisites
 ------------------------------
 
-In order to build PfP you will need to install [Node.js](https://nodejs.org/) first (Node 7 or higher is required). You will also need [Gulp](http://gulpjs.com/), run the following command to install it (administrator privileges required):
+In order to build AEP you will need to install [Node.js](https://nodejs.org/) first (Node 7 or higher is required). You will also need [Gulp](http://gulpjs.com/), run the following command to install it (administrator privileges required):
 
     npm install --global gulp-cli
 
@@ -65,7 +68,7 @@ The following command with produce a file with a name like `build-web/pfp-web-n.
 
     gulp web
 
-After unpacking the package, you can open `index.html` in the browser which will give you a slightly feature-reduced version of PfP.
+After unpacking the package, you can open `index.html` in the browser which will give you a slightly feature-reduced version of AEP.
 
 How to test
 -----------

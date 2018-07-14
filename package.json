@@ -1,12 +1,12 @@
 {
   "title": "Adrium Easy Pass",
-  "name": "pfp-apg",
+  "name": "pfp-aep",
   "description": "Use a single master password to generate secure passwords for all websites - without losing track of passwords you cannot change.",
   "author": "Adrium",
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/palant/easypasswords.git"
+    "url": "https://github.com/adrium/easypass.git"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
