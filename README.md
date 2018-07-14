@@ -10,14 +10,37 @@ Differences to the original version:
 
 * Multiple master passwords can be used
 * Show the passwords concealed to use drag and drop
+* Import/Export
 * Smaller layout
 
 What does not work (yet?):
 
-* Import/Export
 * Migration
 * Sync
 * Only Chrome and Web tested
+
+Using multiple master passwords
+-------------------------------
+
+Sites and accounts are linked to your master password.
+If you want to use another master password on some sites,
+you can create a new store by entering a different password.
+
+To change to a different store, click on *Lock passwords*
+and *New master password.*
+
+You will get a new empty store. If you enter a master password
+that's already in use, don't worry. You will just switch to the
+store you have created previously.
+
+Import/Export
+-------------
+
+You can import and export data that is compatible to PfP,
+as the same format is used.
+
+The backup is limited to the currently active master password.
+So if you want to backup all of your stores, you need to that for all of them manually.
 
 Description
 ===========
