@@ -795,7 +795,7 @@ exports.testAllPasswords = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-disabled.testExport = function(test)
+exports.testExport = function(test)
 {
   function checkExport(test, exportData)
   {
@@ -807,6 +807,9 @@ disabled.testExport = function(test)
     test.ok(parsed.data["hmac-secret"]);
 
     return storage.clear().then(() =>
+    {
+      return storage.clear();
+    }).then(() =>
     {
       return masterPassword.changePassword(dummyMaster);
     }).then(() =>
@@ -954,7 +957,7 @@ disabled.testExport = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-disabled.testDecryptingImport = function(test)
+exports.testDecryptingImport = function(test)
 {
   Promise.resolve().then(() =>
   {
@@ -1043,7 +1046,7 @@ disabled.testDecryptingImport = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-disabled.testConvertingImport = function(test)
+exports.testConvertingImport = function(test)
 {
   let backupMaster = dummyMaster + dummyMaster;
   Promise.resolve().then(() =>
