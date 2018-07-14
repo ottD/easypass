@@ -1,0 +1,107 @@
+/*
+ * This Source Code is subject to the terms of the Mozilla Public License
+ * version 2.0 (the "License"). You can obtain a copy of the License at
+ * http://mozilla.org/MPL/2.0/.
+ */
+/*
+ * This Source Code is subject to the terms of the Mozilla Public License
+ * version 2.0 (the "License"). You can obtain a copy of the License at
+ * http://mozilla.org/MPL/2.0/.
+ */
+body {
+  background-color: #fff;
+  color: #000; }
+
+body,
+input,
+button {
+  font-family: sans-serif;
+  font-size: 14px; }
+
+.warning {
+  background-color: #faa;
+  border-radius: 5px;
+  padding: 5px;
+  background-image: url(../images/android-warning.svg);
+  background-size: 24px;
+  background-position: 5px 5px;
+  background-repeat: no-repeat; }
+  :root:not([dir="rtl"]) .warning {
+    padding-left: 34px; }
+  :root[dir="rtl"] .warning {
+    padding-right: 34px; }
+
+.success {
+  background-color: #cfc;
+  border-radius: 5px; }
+
+.error {
+  font-size: 12px;
+  color: #f44; }
+
+input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid black;
+  border-radius: 2px;
+  margin: 0; }
+  :root:not([dir="rtl"]) input[type="checkbox"] {
+    margin-right: 5px; }
+  :root[dir="rtl"] input[type="checkbox"] {
+    margin-left: 5px; }
+
+input[type="checkbox"]:checked {
+  background-image: url(../images/checkmark-round.svg);
+  background-size: 10px;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+iframe {
+  display: none;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  border-width: 0; }
+
+iframe[data-active="true"] {
+  display: block; }
+
+#allpasswords {
+  left: 0;
+  width: 100%; }
+
+#panel {
+  width: 420px;
+  left: calc((100% - 420px) / 2); }
+
+#inProgressOverlay:not([hidden]) {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.3); }
+
+#in-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 5px; }
+
+#spinning-wheel {
+  min-width: 200px;
+  min-height: 200px;
+  background-size: 200px;
+  background-repeat: no-repeat;
+  background-image: url(../images/circles.svg); }

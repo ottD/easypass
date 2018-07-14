@@ -1,0 +1,32 @@
+<!--
+ - This Source Code is subject to the terms of the Mozilla Public License
+ - version 2.0 (the "License"). You can obtain a copy of the License at
+ - http://mozilla.org/MPL/2.0/.
+ -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="index/index.js"></script>
+    <link rel="stylesheet" href="index/index.css">
+  </head>
+  <body>
+    <noscript>
+      <div class="warning">
+        Please enable JavaScript for this application to work.
+      </div>
+    </noscript>
+
+    <div id="no-webcrypto" class="warning" hidden>
+      Your browser lacks the required functionality for this application.
+      At least Mozilla Firefox 35, Google Chrome 37, Opera 24 or Microsoft
+      Edge 12 is required.
+    </div>
+
+    <div id="inProgressOverlay" hidden>
+      <div id="in-progress">
+        <div id="spinning-wheel"></div>
+      </div>
+    </div>
+  </body>
+</html>
