@@ -198,7 +198,8 @@ function showPasswords()
       let tooltip;
       if (password.type == "generated2" || password.type == "generated")
       {
-        tooltip = i18n.getMessage("password_type_" + password.type);
+        tooltip = i18n.getMessage("to_document_tooltip");
+        tooltip += "\n" + i18n.getMessage("password_type_" + password.type);
         if (password.type == "generated")
           tooltip += "\n" + i18n.getMessage("password_type_generated_replace");
 
@@ -224,7 +225,6 @@ function showPasswords()
       let entry = template.cloneNode(true);
       setCommandHandler(entry.querySelector(".password-menu-link"), toggleMenu.bind(null, password, entry));
       setCommandHandler(entry.querySelector(".to-document-link"), fillInPassword.bind(null, password));
-      setCommandHandler(entry.querySelector(".to-clipboard-link"), copyToClipboard.bind(null, password));
 
       if (password.type == "generated")
       {

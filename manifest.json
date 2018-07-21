@@ -8,7 +8,7 @@
   "description": "__MSG_description__",
   "author": "Adrium",
   "homepage_url": "https://github.com/adrium/easypass.git",
-  "version": "0.10",
+  "version": "0.11",
   "permissions": [
     "tabs",
     "http://*/*",

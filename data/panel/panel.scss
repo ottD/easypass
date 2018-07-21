@@ -229,11 +229,6 @@ a
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  &:hover
-  {
-    background-color: $hover-background;
-  }
 }
 
 .user-name-container
@@ -280,14 +275,10 @@ a
   background-color: 0.7 * $background-color + 0.3 * $text-color;
 }
 
-.to-document-link
+.to-document-link:hover
 {
-  background-image: url(../images/ios-color-wand.svg);
-}
-
-.to-clipboard-link
-{
-  background-image: url(../images/archive.svg);
+  background-color: $hover-background;
+  cursor: pointer;
 }
 
 .pwshow-link
@@ -376,7 +367,6 @@ a
   }
 }
 
-:root.webclient .to-document-link,
 :root.webclient #menu-to-document
 {
   display: none;
