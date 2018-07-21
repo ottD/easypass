@@ -2606,8 +2606,8 @@ exports.removeModificationListener = removeModificationListener;
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/build/Code/pfp/lib/platform.js */12);
-module.exports = __webpack_require__(/*! /home/build/Code/pfp/lib/main.js */13);
+__webpack_require__(/*! /home/build/Code/easypass/lib/platform.js */12);
+module.exports = __webpack_require__(/*! /home/build/Code/easypass/lib/main.js */13);
 
 
 /***/ }),

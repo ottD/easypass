@@ -211,8 +211,6 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center; }
-  .password-container:hover {
-    background-color: #e2f4ff; }
 
 .user-name-container {
   flex-grow: 1; }
@@ -244,11 +242,9 @@ a {
 .password-menu-link[data-menuactive] {
   background-color: #b3b3b3; }
 
-.to-document-link {
-  background-image: url(../images/ios-color-wand.svg); }
-
-.to-clipboard-link {
-  background-image: url(../images/archive.svg); }
+.to-document-link:hover {
+  background-color: #e2f4ff;
+  cursor: pointer; }
 
 .pwshow-link {
   background-image: url(../images/android-warning.svg); }
@@ -313,7 +309,6 @@ a {
 :root[dir="rtl"] .password-menu-entry > .iconic-link {
   margin-left: 5px; }
 
-:root.webclient .to-document-link,
 :root.webclient #menu-to-document {
   display: none; }
 
