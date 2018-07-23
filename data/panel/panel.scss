@@ -7,6 +7,7 @@
 @import "../_shared.scss";
 
 $hover-background: #e2f4ff;
+$success-glow: #6c3;
 
 $menu-arrow-height: 7px;
 $menu-border-width: 1px;
@@ -265,6 +266,22 @@ a
   background-image: url("../images/android-warning.svg");
 }
 
+.user-name-container.to-document-link
+{
+  cursor: pointer;
+  padding: 5px;
+
+  &:hover
+  {
+    background-color: $hover-background;
+  }
+
+  &:focus
+  {
+    background-color: $success-glow;
+  }
+}
+
 .password-menu-link
 {
   background-image: url("../images/android-menu.svg");
@@ -275,10 +292,14 @@ a
   background-color: 0.7 * $background-color + 0.3 * $text-color;
 }
 
-.to-document-link:hover
+.to-document-link.iconic-link
 {
-  background-color: $hover-background;
-  cursor: pointer;
+  background-image: url(../images/ios-color-wand.svg);
+}
+
+.to-clipboard-link
+{
+  background-image: url(../images/archive.svg);
 }
 
 .pwshow-link
