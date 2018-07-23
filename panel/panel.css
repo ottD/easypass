@@ -236,15 +236,25 @@ a {
   background-position: right;
   background-image: url("../images/android-warning.svg"); }
 
+.user-name-container.to-document-link {
+  cursor: pointer;
+  padding: 5px; }
+  .user-name-container.to-document-link:hover {
+    background-color: #e2f4ff; }
+  .user-name-container.to-document-link:focus {
+    background-color: #6c3; }
+
 .password-menu-link {
   background-image: url("../images/android-menu.svg"); }
 
 .password-menu-link[data-menuactive] {
   background-color: #b3b3b3; }
 
-.to-document-link:hover {
-  background-color: #e2f4ff;
-  cursor: pointer; }
+.to-document-link.iconic-link {
+  background-image: url(../images/ios-color-wand.svg); }
+
+.to-clipboard-link {
+  background-image: url(../images/archive.svg); }
 
 .pwshow-link {
   background-image: url(../images/android-warning.svg); }
