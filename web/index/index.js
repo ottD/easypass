@@ -28,16 +28,29 @@ window.addEventListener("load", function()
     return;
   }
 
-  document.getElementById("inProgressOverlay").hidden = false;
-
-  createFrame("background", "background/background.html", () =>
+  crypto.subtle.importKey(
+    "raw",
+    new Uint8Array(16),
+    "AES-GCM",
+    false,
+    ["encrypt"]
+  ).then(key =>
   {
-    createFrame("panel", "panel/panel.html", event =>
+    document.getElementById("inProgressOverlay").hidden = false;
+
+    createFrame("background", "background/background.html", () =>
     {
-      document.getElementById("inProgressOverlay").hidden = true;
-      event.target.setAttribute("data-active", "true");
+      createFrame("panel", "panel/panel.html", event =>
+      {
+        document.getElementById("inProgressOverlay").hidden = true;
+        event.target.setAttribute("data-active", "true");
+      });
+      createFrame("allpasswords", null);
     });
-    createFrame("allpasswords", null);
+  }).catch(error =>
+  {
+    document.getElementById("no-webcrypto").hidden = false;
+    console.error(error);
   });
 });
 

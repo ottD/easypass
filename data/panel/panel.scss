@@ -289,7 +289,7 @@ a
 
 .password-menu-link[data-menuactive]
 {
-  background-color: 0.7 * $background-color + 0.3 * $text-color;
+  background-color: mix($background-color, $text-color, 70%);
 }
 
 .to-document-link.iconic-link

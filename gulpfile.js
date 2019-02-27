@@ -23,13 +23,40 @@ let webpack = require("webpack-stream");
 
 let utils = require("./gulp-utils");
 
-gulp.task("default", ["all"], function()
+gulp.task("eslint", function()
 {
+  return gulp.src(["*.js", "data/**/*.js", "lib/**/*.js", "test/**/*.js",
+                   "test-lib/**/*.js", "web/**/*.js",
+                   "!data/panel/zxcvbn-*.js", "!data/panel/jsqr-*.js",
+                   "!data/panel/formatter.js"])
+             .pipe(eslint())
+             .pipe(eslint.format())
+             .pipe(eslint.failAfterError());
 });
 
-gulp.task("all", ["xpi", "crx", "appx", "web"], function()
+gulp.task("htmlhint", function()
 {
+  return gulp.src(["data/**/*.html"])
+             .pipe(htmlhint(".htmlhintrc"))
+             .pipe(htmlhint.failReporter());
 });
+
+gulp.task("stylelint", function()
+{
+  return gulp.src(["data/**/*.scss"])
+             .pipe(stylelint({
+               "failAfterError": true,
+               "syntax": "scss",
+               "reporters": [
+                 {
+                   "formatter": "string",
+                   "console": true
+                 }
+               ]
+             }));
+});
+
+gulp.task("validate", gulp.parallel("eslint", "htmlhint", "stylelint"));
 
 function buildWorkers(targetdir)
 {
@@ -152,7 +179,7 @@ function removeReloader(data)
     data.background.scripts.splice(index, 1);
 }
 
-gulp.task("build-chrome", ["validate"], function()
+gulp.task("build-chrome", gulp.series("validate", function buildChrome()
 {
   let stream = merge(
     buildCommon("build-chrome"),
@@ -165,14 +192,14 @@ gulp.task("build-chrome", ["validate"], function()
   );
   stream.on("finish", () => touchReloader("build-chrome"));
   return stream;
-});
+}));
 
-gulp.task("watch-chrome", ["build-chrome"], function()
+gulp.task("watch-chrome", gulp.series("build-chrome", function watchChrome()
 {
   gulp.watch(["*.js", "*.json", "data/**/*", "lib/**/*", "locale/**/*"], ["build-chrome"]);
-});
+}));
 
-gulp.task("build-firefox", ["validate"], function()
+gulp.task("build-firefox", gulp.series("validate", function buildFirefox()
 {
   let stream = merge(
     buildCommon("build-firefox"),
@@ -189,19 +216,19 @@ gulp.task("build-firefox", ["validate"], function()
   );
   stream.on("finish", () => touchReloader("build-firefox"));
   return stream;
-});
+}));
 
-gulp.task("build-test", ["validate"], function()
+gulp.task("build-test", gulp.series("validate", function buildTest()
 {
   return buildWorkers("build-test/data");
-});
+}));
 
-gulp.task("watch-firefox", ["build-firefox"], function()
+gulp.task("watch-firefox", gulp.series("build-firefox", function watchFirefox()
 {
   gulp.watch(["*.js", "*.json", "data/**/*", "lib/**/*", "locale/**/*"], ["build-firefox"]);
-});
+}));
 
-gulp.task("build-web", ["validate"], function()
+gulp.task("build-web", gulp.series("validate", function buildWeb()
 {
   let targetdir = "build-web";
   return merge(
@@ -343,46 +370,9 @@ gulp.task("build-web", ["validate"], function()
     gulp.src("web/**/*.html")
         .pipe(gulp.dest(targetdir))
   );
-});
+}));
 
-gulp.task("eslint", function()
-{
-  return gulp.src(["*.js", "data/**/*.js", "lib/**/*.js", "test/**/*.js",
-                   "test-lib/**/*.js", "web/**/*.js",
-                   "!data/panel/zxcvbn-*.js", "!data/panel/jsqr-*.js",
-                   "!data/panel/formatter.js"])
-             .pipe(eslint())
-             .pipe(eslint.format())
-             .pipe(eslint.failAfterError());
-});
-
-gulp.task("htmlhint", function()
-{
-  return gulp.src(["data/**/*.html"])
-             .pipe(htmlhint(".htmlhintrc"))
-             .pipe(htmlhint.failReporter());
-});
-
-gulp.task("stylelint", function()
-{
-  return gulp.src(["data/**/*.scss"])
-             .pipe(stylelint({
-               "failAfterError": true,
-               "syntax": "scss",
-               "reporters": [
-                 {
-                   "formatter": "string",
-                   "console": true
-                 }
-               ]
-             }));
-});
-
-gulp.task("validate", ["eslint", "htmlhint", "stylelint"], function()
-{
-});
-
-gulp.task("crx", ["build-chrome"], function()
+gulp.task("crx", gulp.series("build-chrome", function buildCRX()
 {
   let manifest = require("./manifest.json");
   let result = merge(
@@ -397,9 +387,9 @@ gulp.task("crx", ["build-chrome"], function()
   if (keyFile)
     result = result.pipe(utils.signCRX(keyFile));
   return result.pipe(gulp.dest("build-chrome"));
-});
+}));
 
-gulp.task("xpi", ["build-firefox"], function()
+gulp.task("xpi", gulp.series("build-firefox", function buildXPI()
 {
   let manifest = require("./manifest.json");
   return merge(
@@ -410,9 +400,9 @@ gulp.task("xpi", ["build-firefox"], function()
     ]),
     gulp.src("build-firefox/manifest.json").pipe(utils.jsonModify(removeReloader))
   ).pipe(zip("aep-" + manifest.version + ".xpi")).pipe(gulp.dest("build-firefox"));
-});
+}));
 
-gulp.task("build-edge", ["build-chrome"], function()
+gulp.task("build-edge", gulp.series("build-chrome", function buildEdge()
 {
   let version = require("./manifest.json").version;
   while (version.split(".").length < 4)
@@ -453,17 +443,15 @@ gulp.task("build-edge", ["build-chrome"], function()
         }, "resources.resjson"))
         .pipe(gulp.dest("build-edge/extension/Resources/en-us"))
   );
-});
+}));
 
-gulp.task("build-edge/extension.zip", ["build-edge"], function()
+gulp.task("appx", gulp.series("build-edge", function zipExtension()
 {
   return gulp.src([
     "build-edge/**",
     "!build-edge/**/*.zip", "!build-edge/**/*.appx"
   ]).pipe(zip("extension.zip")).pipe(gulp.dest("build-edge"));
-});
-
-gulp.task("appx", ["build-edge/extension.zip"], function(callback)
+}, function buildAPPX(callback)
 {
   const endpoint = "https://cloudappx.azurewebsites.net/v3/build";
   let req = request.post({
@@ -488,18 +476,18 @@ gulp.task("appx", ["build-edge/extension.zip"], function(callback)
   });
 
   req.form().append("xml", fs.createReadStream("build-edge/extension.zip"));
-});
+}));
 
-gulp.task("web", ["build-web"], function()
+gulp.task("web", gulp.series("build-web", function zipWeb()
 {
   let manifest = require("./manifest.json");
-  gulp.src([
+  return gulp.src([
     "build-web/**",
     "!build-web/**/.*", "!build-web/**/*.zip"
   ]).pipe(zip("aep-web-" + manifest.version + ".zip")).pipe(gulp.dest("build-web"));
-});
+}));
 
-gulp.task("test", ["validate", "build-test"], function()
+gulp.task("test", gulp.series("validate", "build-test", function doTest()
 {
   let testFile = utils.readArg("--test=");
   if (!testFile)
@@ -509,9 +497,12 @@ gulp.task("test", ["validate", "build-test"], function()
 
   return gulp.src("test/" + testFile)
              .pipe(utils.runTests());
-});
+}));
 
 gulp.task("clean", function()
 {
   return del(["build-chrome", "build-firefox", "build-edge", "build-test", "build-web"]);
 });
+
+gulp.task("all", gulp.parallel("xpi", "crx", "appx", "web"));
+gulp.task("default", gulp.parallel("all"));

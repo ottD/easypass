@@ -26,7 +26,13 @@
       "error",
       2,
       {
-        "SwitchCase": 1
+        "SwitchCase": 1,
+        "CallExpression": {
+          "arguments": "off"
+        },
+        "MemberExpression": "off",
+        "ArrayExpression": "off",
+        "ignoreComments": true
       }
     ],
     "key-spacing": "error",

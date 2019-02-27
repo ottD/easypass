@@ -36,7 +36,7 @@ function resetForm(form)
     {
       for (let statement of custom.split(/\s*,\s*/))
       {
-        let match = /^([^\.]+)\.([^=]+)(?:=(.*))?/.exec(statement);
+        let match = /^([^.]+)\.([^=]+)(?:=(.*))?/.exec(statement);
         if (match && match[3])
           $(match[1]).setAttribute(match[2], match[3]);
         else if (match)

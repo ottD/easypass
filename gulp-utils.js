@@ -45,7 +45,7 @@ function transform(modifier, opts)
     }).then(([filepath, contents]) =>
     {
       file.path = filepath;
-      file.contents = new Buffer(contents, "utf-8");
+      file.contents = Buffer.from(contents, "utf-8");
       callback(null, file);
     }).catch(e =>
     {
@@ -88,7 +88,7 @@ exports.signCRX = function(keyFile)
       let publicKey = privateKey.exportKey("pkcs8-public-der");
       let signature = privateKey.sign(contents, "buffer");
 
-      let header = new Buffer(16);
+      let header = Buffer.alloc(16);
       header.write("Cr24", 0);
       header.writeInt32LE(2, 4);
       header.writeInt32LE(publicKey.length, 8);
@@ -227,8 +227,8 @@ exports.runTests = function()
   }
 
   let crypto = require("./test-lib/fake-crypto");
-  let atob = str => new Buffer(str, "base64").toString("binary");
-  let btoa = str => new Buffer(str, "binary").toString("base64");
+  let atob = str => Buffer.from(str, "base64").toString("binary");
+  let btoa = str => Buffer.from(str, "binary").toString("base64");
   let {URL} = require("url");
 
   let nodeunit = require("sandboxed-module").require("nodeunit", {

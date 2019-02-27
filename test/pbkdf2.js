@@ -11,8 +11,8 @@ let {pbkdf2} = require("../data/pbkdf2");
 function compare(test, password, salt, iterations, length, expected)
 {
   let result = pbkdf2(
-    new Buffer(password, "utf-8"),
-    new Buffer(salt + "    ", "utf-8"),
+    Buffer.from(password, "utf-8"),
+    Buffer.from(salt + "    ", "utf-8"),
     iterations,
     length
   );

@@ -11,8 +11,8 @@ let scrypt = require("../data/scrypt");
 function compare(test, password, salt, length, expected)
 {
   let result = scrypt.deriveKey(
-    new Buffer(password, "utf-8"),
-    new Buffer(salt, "utf-8"),
+    Buffer.from(password, "utf-8"),
+    Buffer.from(salt, "utf-8"),
     length
   );
   expected = expected.trim().split(/\s+/).map(n => parseInt(n, 16));
