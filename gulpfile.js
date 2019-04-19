@@ -382,11 +382,8 @@ gulp.task("crx", gulp.series("build-chrome", function buildCRX()
       "!build-chrome/**/.*", "!build-chrome/**/*.zip", "!build-chrome/**/*.crx"
     ]),
     gulp.src("build-chrome/manifest.json").pipe(utils.jsonModify(removeReloader))
-  ).pipe(zip("aep-" + manifest.version + ".zip"));
-  let keyFile = utils.readArg("--private-key=");
-  if (keyFile)
-    result = result.pipe(utils.signCRX(keyFile));
-  return result.pipe(gulp.dest("build-chrome"));
+  );
+  return result.pipe(gulp.dest("build-chrome-" + manifest.version));
 }));
 
 gulp.task("xpi", gulp.series("build-firefox", function buildXPI()
