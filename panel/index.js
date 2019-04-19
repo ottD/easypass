@@ -109,7 +109,7 @@ function resetForm(form) {
         for (var _iterator = custom.split(/\s*,\s*/)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var statement = _step.value;
 
-          var match = /^([^\.]+)\.([^=]+)(?:=(.*))?/.exec(statement);
+          var match = /^([^.]+)\.([^=]+)(?:=(.*))?/.exec(statement);
           if (match && match[3]) $(match[1]).setAttribute(match[2], match[3]);else if (match) $(match[1]).removeAttribute(match[2]);
         }
       } catch (err) {

@@ -100,14 +100,19 @@ window.addEventListener("load", function () {
     return;
   }
 
-  document.getElementById("inProgressOverlay").hidden = false;
+  crypto.subtle.importKey("raw", new Uint8Array(16), "AES-GCM", false, ["encrypt"]).then(function (key) {
+    document.getElementById("inProgressOverlay").hidden = false;
 
-  createFrame("background", "background/background.html", function () {
-    createFrame("panel", "panel/panel.html", function (event) {
-      document.getElementById("inProgressOverlay").hidden = true;
-      event.target.setAttribute("data-active", "true");
+    createFrame("background", "background/background.html", function () {
+      createFrame("panel", "panel/panel.html", function (event) {
+        document.getElementById("inProgressOverlay").hidden = true;
+        event.target.setAttribute("data-active", "true");
+      });
+      createFrame("allpasswords", null);
     });
-    createFrame("allpasswords", null);
+  }).catch(function (error) {
+    document.getElementById("no-webcrypto").hidden = false;
+    console.error(error);
   });
 });
 

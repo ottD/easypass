@@ -3207,7 +3207,7 @@ function getSite(url, passwordName) {
 
 
   // No valid URL, but maybe password name is the site here
-  if (passwordName.includes(".") && !/[\s\/]/.test(passwordName)) return passwordName;
+  if (passwordName.includes(".") && !/[\s/]/.test(passwordName)) return passwordName;
 
   return null;
 }
