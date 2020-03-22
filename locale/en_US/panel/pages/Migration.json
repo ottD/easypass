@@ -1,6 +1,6 @@
 {
   "title": "Legacy passwords and data are no longer supported",
-  "intro": "In order for PfP: Pain-free Passwords to be more robust, some outdated functionality has been removed:",
+  "intro": "In order for Adrium Easy Pass to be more robust, some outdated functionality has been removed:",
   "change1": "Legacy (EasyPasswords 1.x) generated passwords are no longer supported. If you still have any, these will be converted to stored passwords now.",
   "change2": "Legacy (unencrypted) backups will no longer be imported.",
   "conclusion": "None of this is likely to affect you. Still, you might want to create a new backup just so you have one with current data.",

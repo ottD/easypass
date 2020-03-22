@@ -4,7 +4,7 @@
   "minimum_opera_version": "38.0",
   "applications": {
     "gecko": {
-      "id": "easypasswords@palant.de",
+      "id": "adrium@users.noreply.github.com",
       "strict_min_version": "57.0"
     }
   },
@@ -12,8 +12,8 @@
   "name": "__MSG_name__",
   "short_name": "__MSG_name__",
   "description": "__MSG_description__",
-  "author": "Wladimir Palant",
-  "homepage_url": "https://pfp.works/",
+  "author": "Wladimir Palant / Adrium",
+  "homepage_url": "https://github.com/adrium/easypass",
   "version": "2.2.3",
   "permissions": [
     "tabs",

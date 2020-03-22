@@ -289,7 +289,7 @@ gulp.task("crx", gulp.series("build-chrome", function buildCRX()
       "!build-chrome/**/.*", "!build-chrome/**/*.zip", "!build-chrome/**/*.crx"
     ]),
     gulp.src("build-chrome/manifest.json").pipe(utils.jsonModify(removeReloader))
-  ).pipe(zip("pfp-" + manifest.version + ".zip")).pipe(gulp.dest("build-chrome"));
+  ).pipe(zip("aep-" + manifest.version + ".zip")).pipe(gulp.dest("build-chrome"));
 }));
 
 gulp.task("xpi", gulp.series("build-firefox", function buildXPI()
@@ -302,7 +302,7 @@ gulp.task("xpi", gulp.series("build-firefox", function buildXPI()
       "!build-firefox/**/.*", "!build-firefox/**/*.xpi"
     ]),
     gulp.src("build-firefox/manifest.json").pipe(utils.jsonModify(removeReloader))
-  ).pipe(zip("pfp-" + manifest.version + ".xpi")).pipe(gulp.dest("build-firefox"));
+  ).pipe(zip("aep-" + manifest.version + ".xpi")).pipe(gulp.dest("build-firefox"));
 }));
 
 gulp.task("web", gulp.series("build-web", function zipWeb()
@@ -311,7 +311,7 @@ gulp.task("web", gulp.series("build-web", function zipWeb()
   return gulp.src([
     "build-web/**",
     "!build-web/**/.*", "!build-web/**/*.zip"
-  ]).pipe(zip("pfp-web-" + manifest.version + ".zip")).pipe(gulp.dest("build-web"));
+  ]).pipe(zip("aep-web-" + manifest.version + ".zip")).pipe(gulp.dest("build-web"));
 }));
 
 gulp.task("test", gulp.series("validate", "build-test", function doTest()

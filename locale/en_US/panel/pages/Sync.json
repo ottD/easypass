@@ -12,20 +12,20 @@
 
   "selection_label": "Please select your storage provider:",
   "how_heading": "How does this work?",
-  "how_text": "You grant PfP access to a directory within your personal account on Dropbox or another storage provider. This access will be used to upload a file with encrypted data regularly. It's the same data as with your manual backup, but you can connect multiple devices to the same account and changes will propagate to all of them automatically – assuming that they all use the same master password.",
+  "how_text": "You grant AEP access to a directory within your personal account on Dropbox or another storage provider. This access will be used to upload a file with encrypted data regularly. It's the same data as with your manual backup, but you can connect multiple devices to the same account and changes will propagate to all of them automatically – assuming that they all use the same master password.",
   "security_heading": "Is this safe?",
-  "security_text": "Yes. PfP can only access its own file, not the other files stored in your account. Also, the file's data is fully encrypted and can only be decrypted using your master password.",
+  "security_text": "Yes. AEP can only access its own file, not the other files stored in your account. Also, the file's data is fully encrypted and can only be decrypted using your master password.",
   "no_account_heading": "What if I don't have an account?",
-  "no_account_text": "It doesn't matter, you can create an account for free. You don't need to use that account for anything beyond PfP.",
+  "no_account_text": "It doesn't matter, you can create an account for free. You don't need to use that account for anything beyond AEP.",
 
-  "sync_invalid_token": "Access has been denied, you probably need to authorize PfP again.",
-  "sync_unknown_data_format": "Format of currently stored data is unrecognized, it might have been created by a newer PfP version.",
+  "sync_invalid_token": "Access has been denied, you probably need to authorize AEP again.",
+  "sync_unknown_data_format": "Format of currently stored data is unrecognized, it might have been created by a newer AEP version.",
   "sync_connection_error": "Server connection failed.",
   "sync_too_many_retries": "Too many retries after conflicting modifications.",
-  "sync_multiple_candidates": "Your storage provider has multiple PfP files stored for some reason. You probably need to delete PfP data there and sync again.",
-  "sync_malformed_response": "Your storage provider responded in a way that PfP could not understand.",
+  "sync_multiple_candidates": "Your storage provider has multiple AEP files stored for some reason. You probably need to delete AEP data there and sync again.",
+  "sync_malformed_response": "Your storage provider responded in a way that AEP could not understand.",
   "sync_wrong_master_password": "It seems that the currently stored data was encrypted with a different master password.",
-  "sync_unrelated_client": "It seems that remote data has been created by an unrelated PfP instance. If you want to sync to it, disable sync now and set it up again.",
+  "sync_unrelated_client": "It seems that remote data has been created by an unrelated AEP instance. If you want to sync to it, disable sync now and set it up again.",
   "sync_tampered_data": "It seems that remote data has either been tampered with or reset to an older revision. Remove remote data to fix this issue.",
   "sync_master_password_required": "Initial sync requires passwords to be unlocked, please click \"Upload now\" to retry."
 }

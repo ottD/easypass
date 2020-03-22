@@ -1,5 +1,5 @@
 {
-  "title": "All passwords known to PfP",
+  "title": "All passwords known to AEP",
   "show_notes": "Show notes",
   "show_passwords": "Show passwords",
   "intro": "Here you can create an encrypted backup of your data. This page is also safe to print as long as the passwords aren't shown, the information shown is sufficient to recreate the passwords (same master password has to be used).",
