@@ -836,7 +836,7 @@ exports.testExport = function(test)
     test.ok(parsed.data["salt"]);
     test.ok(parsed.data["hmac-secret"]);
 
-    return storage.clear().then(() =>
+    return storage.deleteByPrefix("").then(() =>
     {
       return masterPassword.changePassword(dummyMaster);
     }).then(() =>
@@ -1572,6 +1572,7 @@ exports.testMigration = function(test)
 {
   let atob = str => Buffer.from(str, "base64").toString("binary");
   let btoa = str => Buffer.from(str, "binary").toString("base64");
+  let userid = "user:SE1BQyFhc2RmIWZvb2Jhcg==/";
   let salt = "asdf";
   let hmacSecret = "fdsa";
   let key = "4MgE2P1PbjLyAz7JxczGjOPNtaaqNKofAmGSbNvRtUM=";
@@ -1582,13 +1583,14 @@ exports.testMigration = function(test)
   let digest = data => btoa(hmacPrefix + data);
 
   let {storageData} = browserAPI;
-  storageData.salt = btoa(salt);
-  storageData["hmac-secret"] = encrypt(btoa(hmacSecret));
+  storageData["usersalt"] = btoa(salt);
+  storageData[`${userid}salt`] = btoa(salt);
+  storageData[`${userid}hmac-secret`] = encrypt(btoa(hmacSecret));
 
   function setPassword(passwordData)
   {
-    storageData[`site:${digest(passwordData.site)}`] = encrypt({site: passwordData.site});
-    storageData[`site:${digest(passwordData.site)}:${digest(passwordData.site + "\0" + passwordData.name + "\0" + (passwordData.revision || ""))}`] = encrypt(passwordData);
+    storageData[`${userid}site:${digest(passwordData.site)}`] = encrypt({site: passwordData.site});
+    storageData[`${userid}site:${digest(passwordData.site)}:${digest(passwordData.site + "\0" + passwordData.name + "\0" + (passwordData.revision || ""))}`] = encrypt(passwordData);
   }
 
   setPassword({
@@ -1646,7 +1648,7 @@ exports.testMigration = function(test)
     notes: stored2.notes
   });
 
-  storageData[`site:${digest("sub." + generated4.site)}`] = encrypt({
+  storageData[`${userid}site:${digest("sub." + generated4.site)}`] = encrypt({
     site: "sub." + generated4.site,
     alias: generated4.site
   });

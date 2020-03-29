@@ -119,7 +119,7 @@ exports.testState = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-exports.testClearOnChange = function(test)
+exports.testSeperateStorage = function(test)
 {
   function addData()
   {
@@ -157,11 +157,10 @@ exports.testClearOnChange = function(test)
     return passwords.getAllPasswords();
   }).then(allPasswords =>
   {
-    test.deepEqual(allPasswords, {});
+    let entries = Object.keys(allPasswords);
+    test.ok(entries.includes("example.com"), "Includes example.com");
+    test.ok(entries.includes("example.info"), "Includes example.info");
 
-    return addData();
-  }).then(() =>
-  {
     return masterPassword.changePassword(dummyMaster + dummyMaster);
   }).then(() =>
   {

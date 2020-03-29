@@ -7,7 +7,7 @@
 "use strict";
 
 let {
-  passwords, recoveryCodes, masterPassword, fakeCrypto
+  passwords, recoveryCodes, masterPassword, fakeCrypto, browserAPI
 } = require("../build-test/lib");
 
 function unexpectedError(error)
@@ -23,6 +23,12 @@ function done()
 
 exports.setUp = function(callback)
 {
+  let {storageData} = browserAPI;
+  for (let key of Object.keys(storageData))
+    delete storageData[key];
+
+  masterPassword.forgetPassword();
+
   fakeCrypto.disableFakeEncryption();
   fakeCrypto.enableFakeRandom(2);
   callback();
