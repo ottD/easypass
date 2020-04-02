@@ -1583,7 +1583,7 @@ exports.testMigration = function(test)
   let digest = data => btoa(hmacPrefix + data);
 
   let {storageData} = browserAPI;
-  storageData["usersalt"] = btoa(salt);
+  storageData["pref:usersalt"] = btoa(salt);
   storageData[`${userid}salt`] = btoa(salt);
   storageData[`${userid}hmac-secret`] = encrypt(btoa(hmacSecret));
 
