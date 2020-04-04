@@ -12,7 +12,7 @@
       <template v-if="!hasPassword">
         {{ $t("new_master_message") }}
       </template>
-      <div v-else class="warning">
+      <div v-else>
         {{ $t("reset_master_message") }}
       </div>
 
