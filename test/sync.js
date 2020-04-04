@@ -13,8 +13,6 @@ let {
 
 let dummyMaster = "foobar";
 
-let disabled = {};
-
 function unexpectedError(error)
 {
   this.ok(false, "Unexpected error: " + error);
@@ -26,13 +24,21 @@ function done()
   this.done();
 }
 
+function removePrefix(key)
+{
+  return key.replace(/user:.*\//, "");
+}
+
 function getLocalData()
 {
   let {storageData} = browserAPI;
   let filteredData = {};
   for (let key of Object.keys(storageData))
-    if (key.startsWith("site:"))
-      filteredData[key] = storageData[key];
+  {
+    let keyname = removePrefix(key);
+    if (keyname.startsWith("site:"))
+      filteredData[keyname] = storageData[key];
+  }
   return filteredData;
 }
 
@@ -45,14 +51,20 @@ function checkSyncError(test)
 
 function sign(data)
 {
-  let ciphertext = atob(data.data["sync-secret"].split("_")[1]);
+  let values = [data.revision];
+  let rawkeys = {};
+  let keys = Object.keys(data.data).map((key) =>
+  {
+    let keyname = removePrefix(key);
+    rawkeys[keyname] = key;
+    return keyname;
+  });
+  let ciphertext = atob(data.data[rawkeys["sync-secret"]].split("_")[1]);
   let secret = atob(JSON.parse(fakeCrypto.subtle._fakeDecrypt(ciphertext)));
 
-  let values = [data.revision];
-  let keys = Object.keys(data.data);
   keys.sort();
   for (let key of keys)
-    values.push([key, data.data[key]]);
+    values.push([key, data.data[rawkeys[key]]]);
   data.signature = btoa("HMAC!" + secret + "!" + JSON.stringify(values));
   return data;
 }
@@ -79,6 +91,9 @@ exports.testAuthorizeAndDisable = function(test)
 {
   Promise.resolve().then(() =>
   {
+    return masterPassword.changePassword(dummyMaster);
+  }).then(() =>
+  {
     test.deepEqual(sync.getSyncData(), {}, "Sync not set up initially");
     return sync.authorize("dropbox");
   }).then(() =>
@@ -92,7 +107,7 @@ exports.testAuthorizeAndDisable = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-disabled.testMerge = function(test)
+exports.testMerge = function(test)
 {
   Promise.resolve().then(() =>
   {
@@ -111,7 +126,7 @@ disabled.testMerge = function(test)
       storage.get("salt", null),
       storage.get("hmac-secret", null),
       storage.get("sync-secret", null),
-      masterPassword.forgetPassword()
+      null
     ]);
   }).then(([salt, hmac, secret, _]) =>
   {
@@ -276,7 +291,7 @@ disabled.testMerge = function(test)
       storage.get("salt", null),
       storage.get("hmac-secret", null),
       storage.get("sync-secret", null),
-      masterPassword.forgetPassword()
+      null
     ]);
   }).then(([salt, hmac, secret, _]) =>
   {
@@ -337,7 +352,7 @@ disabled.testMerge = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-disabled.testUnrelated = function(test)
+exports.testUnrelated = function(test)
 {
   Promise.resolve().then(() =>
   {
@@ -430,7 +445,7 @@ disabled.testUnrelated = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-disabled.testErrors = function(test)
+exports.testErrors = function(test)
 {
   return Promise.resolve().then(() =>
   {
@@ -444,10 +459,8 @@ disabled.testErrors = function(test)
   }).then(() =>
   {
     test.ok(!sync.getSyncData().error, "No error after initial sync");
-    return Promise.all([
-      masterPassword.forgetPassword(),
-      storage.set("site:foo", "bar", null)
-    ]);
+
+    return storage.set("site:foo", "bar", null);
   }).then(() =>
   {
     sync.getSyncData().token += "0";
@@ -643,7 +656,7 @@ disabled.testErrors = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-disabled.testNesting = function(test)
+exports.testNesting = function(test)
 {
   return Promise.resolve().then(() =>
   {
@@ -658,10 +671,7 @@ disabled.testNesting = function(test)
   {
     test.ok(!sync.getSyncData().error, "No error after initial sync");
 
-    return Promise.all([
-      masterPassword.forgetPassword(),
-      storage.set("site:foo", "bar", null)
-    ]);
+    return storage.set("site:foo", "bar", null);
   }).then(() =>
   {
     provider.changeRevisionOnGet = 1;
@@ -689,7 +699,7 @@ disabled.testNesting = function(test)
   }).catch(unexpectedError.bind(test)).then(done.bind(test));
 };
 
-disabled.testRekey = function(test)
+exports.testRekey = function(test)
 {
   let salt = null;
   return Promise.resolve().then(() =>
