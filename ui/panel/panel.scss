@@ -344,7 +344,7 @@ a.iconic-link:hover
   background-image: url(../images/ionicons/md-clipboard.svg);
 }
 
-.show-qrcode-link
+.show-pwshow-link
 {
   background-image: url(../images/ionicons/md-barcode.svg);
 }
@@ -495,11 +495,23 @@ a.iconic-link:hover
   min-height: 100px;
 }
 
-.qrcode-canvas-container
+.pwshow-container input
 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  font: $font-size-small $font-family-monospace;
+  padding: $block-padding;
+  text-align: center;
+}
+
+.pwshow-container input#pwshow-password
+{
+  border: 1px solid $warning-background;
+  color: white;
+}
+
+.pwshow-container input#pwshow-password::selection
+{
+  color: $warning-background;
+  background: $warning-background;
 }
 
 #notes-textarea
