@@ -6,7 +6,7 @@
 
 @import "../_shared.scss";
 
-$body-width: 600px;
+$body-width: $body-width;
 $page-padding: 10px;
 $menu-border-width: 1px;
 
@@ -27,6 +27,11 @@ h1
   font-weight: bold;
   margin-top: 0;
   margin-bottom: $block-spacing;
+}
+
+a
+{
+  color: lighten($accent-color, 10%);
 }
 
 .page
@@ -181,18 +186,7 @@ h1
 {
   display: flex;
   flex-direction: column;
-  background-color: #eee;
-  @include padding-inline-start($inline-spacing);
-
-  & > :first-child
-  {
-    height: $inline-spacing;
-  }
-
-  & > :not(.active)
-  {
-    @include border-end(1px solid #ccc);
-  }
+  background-color: $accent-color;
 }
 
 .tab
@@ -202,26 +196,17 @@ h1
   background-size: $icon-size;
   background-repeat: no-repeat;
   background-position: 50%;
-  border: 1px solid #eee;
+  filter: invert(0.9);
+  padding: $inline-spacing;
 
   &.active
   {
-    background-color: $background-color;
-    border-color: #ccc;
-
-    border-radius: $border-radius 0 0 $border-radius;
-    border-right-color: $background-color;
-
-    :root[dir="rtl"] &
-    {
-      border-radius: 0 $border-radius $border-radius 0;
-      border-left-color: $background-color;
-    }
+    background-color: #ffff;
   }
 
   &:not(.active):hover
   {
-    background-color: #f8f8f8;
+    background-color: #fff6;
   }
 }
 
@@ -270,6 +255,7 @@ h1
   display: flex;
   flex-direction: column;
   padding: 1px;
+  margin-bottom: $inline-spacing;
   max-height: 300px;
   overflow: auto;
 }
@@ -279,16 +265,17 @@ h1
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  &:hover
-  {
-    background-color: $hover-background;
-  }
 }
 
 .user-name-container
 {
   flex-grow: 1;
+  padding: $inline-spacing;
+
+  &:hover
+  {
+    background-color: $hover-background;
+  }
 }
 
 .password-revision::before
@@ -308,11 +295,13 @@ h1
   min-height: $icon-size;
   background-size: $icon-size;
   background-repeat: no-repeat;
+  background-position: center;
+  padding: $inline-spacing;
 }
 
 a.iconic-link:hover
 {
-  outline: 1px solid #888;
+  background-color: $hover-background;
 }
 
 .password-menu-link
@@ -370,6 +359,7 @@ a.iconic-link:hover
     font-size: $font-size-small;
     color: $text-color;
     text-decoration: none;
+    padding: 1px;
   }
 
   &:hover

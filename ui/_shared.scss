@@ -4,17 +4,21 @@
  * http://mozilla.org/MPL/2.0/.
  */
 
-$font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-size: 24px;
-$font-size-small: 16px;
+$font-family: sans-serif;
+$font-size: 0.9em;
+$font-size-small: 0.8em;
+
+$accent-color: #157;
+$hover-background: mix(white, $accent-color, 90%);
 
 $text-color: #000;
 $background-color: #fff;
 $warning-background: #faa;
 $success-background: #cfc;
 $error-text: #f44;
-$hover-background: #e2f4ff;
 $greyed-color: #ccc;
+
+$body-width: 400px;
 
 $block-spacing: 15px;
 $block-padding: 5px;
@@ -22,10 +26,10 @@ $inline-spacing: 5px;
 $border-radius: $block-padding;
 $dialog-padding: 20px;
 
-$small-icon-size: $font-size-small;
-$text-icon-size: $font-size;
-$icon-size: 32px;
-$large-icon-size: 48px;
+$small-icon-size: 12px;
+$text-icon-size: 16px;
+$icon-size: 20px;
+$large-icon-size: 32px;
 
 @mixin no-appearance
 {
@@ -109,6 +113,12 @@ $large-icon-size: 48px;
   {
     float: left;
   }
+}
+
+html[data-portname="index"] body
+{
+  margin: 100px auto;
+  box-shadow: 0 0 8px #0009;
 }
 
 body
@@ -202,7 +212,7 @@ input[type="checkbox"]
 input[type="checkbox"]:checked
 {
   background-image: url(../images/ionicons/md-checkmark.svg);
-  background-size: $font-size - 4px;
+  background-size: $small-icon-size;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -226,8 +236,6 @@ input[type="checkbox"]:checked
 {
   margin: auto;
   background-color: $background-color;
-  border: 1px solid black;
-  border-radius: $border-radius;
 
   &.stretch
   {
@@ -262,6 +270,7 @@ input[type="checkbox"]:checked
   background-size: $small-icon-size;
   background-repeat: no-repeat;
   background-image: url(../images/ionicons/md-close.svg);
+  background-position: center;
 
   &:hover
   {
@@ -271,7 +280,7 @@ input[type="checkbox"]:checked
 
 .modalOverlay-cancel-container > .cancel
 {
-  margin: $border-radius;
+  padding: $border-radius;
 }
 
 .modal-form
