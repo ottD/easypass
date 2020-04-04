@@ -267,14 +267,34 @@ a
   align-items: center;
 }
 
+@keyframes user-name-container-focus
+{
+  from
+  {
+    background-color: $success-background;
+  }
+
+  to
+  {
+    background-color: $hover-background;
+  }
+}
+
 .user-name-container
 {
   flex-grow: 1;
   padding: $inline-spacing;
+  cursor: pointer;
 
   &:hover
   {
     background-color: $hover-background;
+  }
+
+  &:focus
+  {
+    outline: none;
+    animation: 1s user-name-container-focus;
   }
 }
 
