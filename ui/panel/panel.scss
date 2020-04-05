@@ -15,6 +15,12 @@ $menu-border-width: 1px;
   margin: 0;
 }
 
+html[data-portname="index"] body
+{
+  margin: 100px auto;
+  box-shadow: 0 0 8px #0009;
+}
+
 body
 {
   width: $body-width;
