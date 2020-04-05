@@ -35,24 +35,12 @@
     "page": "ui/options/options.html"
   },
   "icons": {
-    "16": "ui/images/icon16.png",
-    "20": "ui/images/icon20.png",
-    "25": "ui/images/icon25.png",
-    "30": "ui/images/icon30.png",
     "32": "ui/images/icon32.png",
-    "40": "ui/images/icon40.png",
-    "48": "ui/images/icon48.png",
-    "64": "ui/images/icon64.png",
     "128": "ui/images/icon128.png"
   },
   "browser_action": {
     "default_icon": {
-      "16": "ui/images/icon16.png",
-      "20": "ui/images/icon20.png",
-      "25": "ui/images/icon25.png",
-      "30": "ui/images/icon30.png",
-      "32": "ui/images/icon32.png",
-      "40": "ui/images/icon40.png"
+      "32": "ui/images/icon32.png"
     },
     "default_popup": "ui/panel/panel.html",
     "default_title": "__MSG_name__"

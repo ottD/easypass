@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32">
+  <defs>
+    <linearGradient id="a">
+      <stop offset="0" stop-opacity=".2"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="b">
+      <stop offset="0" stop-color="#fff" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" gradientUnits="userSpaceOnUse" id="e" x1="20" y1="9" x2="27" y2="16"/>
+    <linearGradient xlink:href="#b" gradientUnits="userSpaceOnUse" id="f" x1="0" y1="2" x2="0" y2="30"/>
+    <clipPath clipPathUnits="userSpaceOnUse" id="c">
+      <path d="M 5,2 V 30 H 27 V 9 H 20 V 2 Z"/>
+    </clipPath>
+    <g id="d" opacity=".15" fill="#fff">
+      <rect y="10" x="10" height="4" width="4" fill-opacity=".437"/>
+      <rect y="10" x="14" height="4" width="4" fill-opacity=".817"/>
+      <rect y="10" x="18" height="4" width="4" fill-opacity=".425"/>
+      <rect y="14" x="10" height="4" width="4" fill-opacity=".709"/>
+      <rect y="14" x="14" height="4" width="4" fill-opacity=".554"/>
+      <rect y="14" x="18" height="4" width="4" fill-opacity=".481"/>
+      <rect y="18" x="10" height="4" width="4" fill-opacity=".399"/>
+      <rect y="18" x="14" height="4" width="4" fill-opacity=".203"/>
+      <rect y="18" x="18" height="4" width="4" fill-opacity=".778"/>
+      <rect y="22" x="10" height="4" width="4" fill-opacity=".965"/>
+      <rect y="22" x="14" height="4" width="4" fill-opacity=".708"/>
+      <rect y="22" x="18" height="4" width="4" fill-opacity=".132"/>
+    </g>
+  </defs>
+  <path d="M 5,2 V 30 H 27 V 9 L 20,2 Z" fill="#157"/>
+  <g clip-path="url(#c)">
+    <use transform="translate(-6 -8)" xlink:href="#d"/>
+    <use transform="translate(6 -8)" xlink:href="#d"/>
+    <use transform="translate(-6 8)" xlink:href="#d"/>
+    <use transform="translate(6 8)" xlink:href="#d"/>
+  </g>
+  <path d="M 27,9 20,2 v 7 z" opacity=".5" fill="#fff"/>
+  <rect y="2" x="5" height="1" width="15" opacity=".5" fill="#fff"/>
+  <rect y="29" x="5" height="1" width="22" opacity=".25"/>
+  <path d="M 27,16 20,9 h 7 z" fill="url(#e)"/>
+  <path d="M 5,2 V 30 H 27 V 9 L 20,2 Z" fill="url(#f)"/>
+  <g fill="#e6e6e6">
+    <path d="m 10,24 v -8 h 2 v -2 h 2 v 2 h 4 v -2 h 2 v 2 h 2 v 8 z"/>
+    <path d="m 16,10 a 4,4 0 0 0 -4,4 h 2 a 2,2 0 0 1 2,-2 2,2 0 0 1 2,2 h 2 a 4,4 0 0 0 -4,-4 z"/>
+  </g>
+</svg>
