@@ -39,7 +39,6 @@ function rollup(overrides = {})
       ...prePlugins,
       require("./globalLoader")({
         vue: "Vue",
-        jsqr: "JSQR",
         zxcvbn: "zxcvbn"
       }),
       resolve(),
